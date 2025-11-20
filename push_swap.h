@@ -18,4 +18,7 @@ void    sa(t_node **a);
 void    pa(t_node **a, t_node **b);
 void    pb(t_node **a, t_node **b);
 
+long atol(const char *str);
+int is_number(char *str);
+int     has_duplicates(t_node *a);
 #endif
