@@ -25,5 +25,16 @@ int main(int ac, char **av)
             write(2, "Error\n", 6);
             return(1);
         }
+        add_back(&a, (int)value);
+        i++;
     }
+
+    if(has_duplicates(a))
+    {
+        write(2, "Error\n", 6);
+        return(1);
+    }
+
+    if(is_sorted)
+        return(1);
 }
