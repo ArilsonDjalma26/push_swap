@@ -43,3 +43,8 @@ void    pa(t_node **a, t_node **b)
 
     write(1, "pa\n", 3);
 }
+void    ra(t_node **a)
+{
+    rotate_stack(a);
+    write(1, "ra\n", 3);
+}

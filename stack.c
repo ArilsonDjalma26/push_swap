@@ -47,3 +47,19 @@ void    add_back(t_node **stack, int value)
         last = last -> next;
     last -> next = node;
 }
+void    rotate_stack(t_node **stack)
+{
+    if(!stack || !*stack || !(*stack) -> next )
+        return ;
+    
+    t_node  *first;
+    t_node  *last;
+
+    first = *stack;
+    last = first;
+
+    while (last -> next)
+        last = last -> next;
+    last -> next = first;
+    first = first -> next;
+}

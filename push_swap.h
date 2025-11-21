@@ -15,6 +15,7 @@ t_node  *new_node(int value);
 void stack_push(t_node **stack, int value);
 int stack_pop(t_node **stack);
 void    add_back(t_node **stack, int value);
+void    rotate_stack(t_node **stack);
 
 //operações
 void    sa(t_node **a);
