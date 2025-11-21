@@ -36,7 +36,14 @@ int main(int ac, char **av)
         return(1);
     }
     if(is_sorted)
-        return(1);
-    size = stack_size(a);
-
+        return(0);
+    size = stack_size(&a);
+    if(size == 2)
+        sort_2(&a);
+    else if(size == 3)
+        sort_3(&a);
+    else if(size <= 5)
+        sort_5(&a, &b);
+    else
+        radix(&a, &b);
 }
