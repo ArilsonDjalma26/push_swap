@@ -3,6 +3,7 @@
 int main(int ac, char **av)
 {
     t_node  *a;
+    t_node  *b;
     long    value;
     int     i;
     int     size;
@@ -10,6 +11,7 @@ int main(int ac, char **av)
     i = 1;
     size = 0;
     a = NULL;
+    b = NULL;
     if (ac < 2)
         return(0);
     while(i < ac)
