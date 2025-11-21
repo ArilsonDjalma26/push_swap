@@ -26,4 +26,5 @@ long atol(const char *str);
 int is_number(char *str);
 int     has_duplicates(t_node *a);
 int is_sorted(t_node *a);
+int stack_size(t_node *begin_list);
 #endif

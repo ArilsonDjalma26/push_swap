@@ -80,3 +80,16 @@ int is_sorted(t_node *a)
     }
     return(1);
 }
+
+int stack_size(t_node *begin_list)
+{
+    int     count;
+
+    count = 0;
+    while(begin_list != NULL)
+    {
+        count++;
+        begin_list = begin_list -> next; 
+    }
+    return(count);
+}

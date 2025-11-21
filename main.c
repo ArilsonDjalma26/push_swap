@@ -5,13 +5,13 @@ int main(int ac, char **av)
     t_node  *a;
     long    value;
     int     i;
+    int     size;
 
-    a = NULL;
     i = 1;
-
+    size = 0;
+    a = NULL;
     if (ac < 2)
         return(0);
-    
     while(i < ac)
     {
         if (!is_number(av[i]))
@@ -28,13 +28,13 @@ int main(int ac, char **av)
         add_back(&a, (int)value);
         i++;
     }
-
     if(has_duplicates(a))
     {
         write(2, "Error\n", 6);
         return(1);
     }
-
     if(is_sorted)
         return(1);
+    size = stack_size(a);
+
 }
