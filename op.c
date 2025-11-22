@@ -48,3 +48,8 @@ void    ra(t_node **a)
     rotate_stack(a);
     write(1, "ra\n", 3);
 }
+void    rra(a)
+{
+    reverse_rotate_stack(a);
+    write(1, "rra\n", 6);
+}
