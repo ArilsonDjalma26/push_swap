@@ -6,6 +6,7 @@ void    sort_2(t_node **a)
         return ;
     if((*a)-> value > (*a) -> next -> value)
         sa(a);
+    
 }
 void    sort_3(t_node **a)
 {

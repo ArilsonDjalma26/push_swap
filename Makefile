@@ -3,7 +3,8 @@ CFLAGS = -Wall -Wextra -Werror
 CC = cc
 
 SRS = main.c \
-	op.c \
+	op1.c \
+	op2.c \
 	parser.c \
 	sorts.c \
 	stack1.c \

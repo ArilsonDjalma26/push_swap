@@ -16,7 +16,7 @@ void    sa(t_node **a)
 
     *a = second;
 
-    write(1, "sa\n", 3);
+    write(1, "sa\n", 4);
 }
 
 void    pb(t_node **a, t_node **b)
@@ -29,27 +29,22 @@ void    pb(t_node **a, t_node **b)
     value = stack_pop(a);
     stack_push(b, value);
 
-    write(1, "pb\n", 3);
+    write(1, "pb\n", 4);
 }
 
-void    pa(t_node **a, t_node **b)
+void    sb(t_node **b)
 {
-    int value;
+    t_node  *first;
+    t_node  *second;
 
-    if(!b || !*b)
-        return;
-    value = stack_pop(b);
-    stack_push(a, value);
+    if(!b || !*b || !(*b) -> next)
+        return ;
+    first = *b;
+    second = first -> next;
 
-    write(1, "pa\n", 3);
-}
-void    ra(t_node **a)
-{
-    rotate_stack(a);
-    write(1, "ra\n", 3);
-}
-void    rra(a)
-{
-    reverse_rotate_stack(a);
-    write(1, "rra\n", 6);
+    first -> next = second -> next;
+    second = first;
+
+    *b = second;
+    write(1, "sb\n", 4);
 }

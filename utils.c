@@ -5,8 +5,8 @@ void    move_min_to_top(t_node **a)
     int     pos;
     int     size;
     
-    pos = find_min_position(a);
-    size = stack_size(a);
+    pos = find_min_position(*a);
+    size = stack_size(*a);
 
     if(pos == 0)
         return ;
@@ -57,4 +57,26 @@ int stack_size(t_node *begin_list)
         begin_list = begin_list -> next; 
     }
     return(count);
+}
+void    free_stack(t_node **stack)
+{
+    if(!stack)
+        return ;
+    t_node *temp;
+
+    while(stack != NULL)
+    {
+        temp = (*stack) -> next;
+        free(*stack);
+        *stack = temp;
+    }
+    printf("Vai fechar...");
+    exit(1);
+}
+
+void    error_free(t_node **stack)
+{
+    write(2, "Error\n", 7);
+    free_stack(stack);
+    exit(1);
 }

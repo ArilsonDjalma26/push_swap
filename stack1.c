@@ -7,13 +7,14 @@ t_node  *new_node(int value)
         return(NULL);
     n -> value = value;
     n -> next = NULL;
+    return(n);
 }
 
 void stack_push(t_node **stack, int value)
 {
     t_node *n = new_node(value);
     if(!n)
-        return(NULL);
+        return ;
     n -> next = *stack;
     *stack = n;
 }

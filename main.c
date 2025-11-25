@@ -4,22 +4,20 @@ int main(int ac, char **av)
 {
     t_node  *a;
     t_node  *b;
-    long    value;
-    int     i;
     int     size;
 
-    i = 1;
     size = 0;
     a = NULL;
     b = NULL;
     if (ac < 2)
         return(0);
-   
+   printf("Oi");
     a = parse_args(ac, av);
 
-    if(is_sorted)
-        return(0);
-    size = stack_size(&a);
+    printf("Oi");
+    if(is_sorted(a))
+        free_stack(&a);
+    size = stack_size(a);
     if(size == 2)
         sort_2(&a);
     else if(size == 3)

@@ -21,7 +21,7 @@ int is_number(char *str)
     return(1);
 }
 
-long atol(const char *str)
+long ft_atol(const char *str)
 {
     long    result;
     int         i;
@@ -86,28 +86,19 @@ t_node *parse_args(int ac, char **av)
     long    value;
     t_node  *stack;
 
-    i = 0;
+    i = 1;
     stack = NULL;
      while(i < ac)
     {
         if (!is_number(av[i]))
-        {
-            write(2, "Error\n", 6);
-            exit(1);
-        }
+            error_free(&stack);
         value = ft_atol(av[i]);
         if(value < INT_MIN || value > INT_MAX)
-        {
-            write(2, "Error\n", 6);
-            exit(1);
-        }
+            error_free(&stack);
         add_back(&stack, (int)value);
         i++;
     }
     if(has_duplicates(stack))
-    {
-        write(2, "Error\n", 6);
-        exit(1);
-    }
+        error_free(&stack);
     return(stack);
 }
