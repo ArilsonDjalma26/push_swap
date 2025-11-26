@@ -1,24 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalbano <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/26 13:09:12 by aalbano           #+#    #+#             */
+/*   Updated: 2025/11/26 13:09:15 by aalbano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int is_number(char *str)
+int is_number(char **vet)
 {
     int i;
+    int j;
 
     i = 0;
-    if(!str || !str[0])
-        return(0);
-    if(str[i] == '-' || str[i] == '+')
-        i++;
-    if(!str[i])
-        return(0);
-    
-    while(str[i])
+    while(vet[i])
     {
-        if(str[i] < '0' || str[i] > '9')
-            return(0);
+        j = 0; 
+        while(vet[i][j])
+        {
+            if(vet[i][j] < '0' || vet[i][j] > '9')
+            {
+                if((vet[i][j] == '-' || vet[i][j] == '+') && j == 0)
+                    j++;
+                else 
+                    return (write(2, "Error\n", 7), 1);
+            }
+            else
+                j++;
+        }
         i++;
-    }
-    return(1);
+    } 
+    return(0);
 }
 
 long ft_atol(const char *str)
@@ -30,13 +47,10 @@ long ft_atol(const char *str)
     result = 0;
     sinal = 1;
     i = 0;
-
     while(str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
         i++;
     if(str[i] == '-' || str[i] == '+')
     {
-        if(str[i + 1] == '+' || str[i + 1] == '-')
-            return(0);
         if(str[i] == '-')
             sinal = -1;
         i++;
@@ -49,22 +63,62 @@ long ft_atol(const char *str)
     return(result * sinal);
 }
 
-int     has_duplicates(t_node *a)
+int verify(const char *str)
 {
-    t_node  *cur;
-    t_node  *cmp;
+    long    result;
+    int         i;
+    int     sinal;
 
-    cur = a;
-    while(cur)
+    result = 0;
+    sinal = 1;
+    i = 0;
+    while(str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+        i++;
+    if(str[i] == '-' || str[i] == '+')
     {
-        cmp = cur -> next;
-        while(cmp)
-        {
-            if(cmp -> value == cur -> value)
-                return(1);
-            cmp = cmp -> next;
-        }
-        cur = cur -> next;
+        if (!str[i + 1])
+            return (1);
+        if(str[i] == '-')
+            sinal = -1;
+        i++;
+    }
+    while(str[i] && (str[i] >= '0' && str[i] <= '9'))
+    {
+        if ((sinal == -1 && (result * 10 + str[i] - '0') * -1 < INT_MIN) || 
+        (sinal == 1 && result * 10 + str[i] - '0' > INT_MAX))
+            return (1);
+        result = result * 10 + (str[i] - '0');
+        i++;
+    }
+    return(0);
+}
+
+static int repeated(int value, t_node *a)
+{
+    while (a != NULL)
+    {
+        if (value == a->value)
+            return (1);
+        a = a->next;
+    }
+    return (0);
+}
+
+int     has_duplicates(char **vet, t_node **a)
+{
+    int i;
+    long value;
+
+    i = 0;
+    while (vet[i])
+    {
+        if (verify(vet[i]) == 1)
+            return (write(2, "Error\n", 7), 1);
+        value = ft_atol(vet[i]);
+        if (repeated(value, *a) == 1)
+            return (write(2, "Error\n", 7), 1);
+        add_back(a, value);
+        i++;
     }
     return(0);
 }
@@ -80,25 +134,23 @@ int is_sorted(t_node *a)
     }
     return(1);
 }
-t_node *parse_args(int ac, char **av)
+int parse_args(int ac, char **av, t_node **a)
 {
     int     i;
-    long    value;
-    t_node  *stack;
+    char **vet;
 
     i = 1;
-    stack = NULL;
-     while(i < ac)
+    while(i < ac)
     {
-        if (!is_number(av[i]))
-            error_free(&stack);
-        value = ft_atol(av[i]);
-        if(value < INT_MIN || value > INT_MAX)
-            error_free(&stack);
-        add_back(&stack, (int)value);
+        vet = ft_split(av[i], ' ');
+        if (ft_strlen(vet[0]) == 0)
+            return (write(2, "Error\n", 7), 1);
+        if (is_number(vet) == 1)
+            return (free_all(vet), 1);
+        if(has_duplicates(vet, a) == 1)
+            return (free_all(vet), 1);
+        free_all(vet);
         i++;
     }
-    if(has_duplicates(stack))
-        error_free(&stack);
-    return(stack);
+    return(0);
 }

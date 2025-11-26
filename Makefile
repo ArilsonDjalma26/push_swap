@@ -9,7 +9,9 @@ SRS = main.c \
 	sorts.c \
 	stack1.c \
 	stack2.c \
-	utils.c
+	utils.c \
+	ft_split.c \
+	utils2.c
 
 OBJS = $(SRS:.c=.o)
 

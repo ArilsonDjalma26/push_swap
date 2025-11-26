@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalbano <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/26 13:10:36 by aalbano           #+#    #+#             */
+/*   Updated: 2025/11/26 13:10:38 by aalbano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void    move_min_to_top(t_node **a)
@@ -60,17 +72,18 @@ int stack_size(t_node *begin_list)
 }
 void    free_stack(t_node **stack)
 {
-    if(!stack)
-        return ;
+    t_node  *curr;
     t_node *temp;
 
-    while(stack != NULL)
+    if(!stack || !*(stack))
+        return ;
+    curr = *stack;
+    while(curr != NULL)
     {
-        temp = (*stack) -> next;
-        free(*stack);
-        *stack = temp;
+        temp = curr;
+        curr = curr->next;
+        free(temp);
     }
-    printf("Vai fechar...");
     exit(1);
 }
 

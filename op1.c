@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op1.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalbano <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/26 13:08:50 by aalbano           #+#    #+#             */
+/*   Updated: 2025/11/26 13:08:53 by aalbano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void    sa(t_node **a)
@@ -10,13 +22,10 @@ void    sa(t_node **a)
 
     first = *a;
     second = first -> next;
-
-    first -> next = second -> next;
-    second = first;
-
+    first->next = second->next;
+    second->next = first;
     *a = second;
-
-    write(1, "sa\n", 4);
+    write(1, "sa\n", 3);
 }
 
 void    pb(t_node **a, t_node **b)
@@ -29,7 +38,7 @@ void    pb(t_node **a, t_node **b)
     value = stack_pop(a);
     stack_push(b, value);
 
-    write(1, "pb\n", 4);
+    write(1, "pb\n", 3);
 }
 
 void    sb(t_node **b)
@@ -46,5 +55,5 @@ void    sb(t_node **b)
     second = first;
 
     *b = second;
-    write(1, "sb\n", 4);
+    write(1, "sb\n", 3);
 }
