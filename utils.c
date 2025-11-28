@@ -84,7 +84,7 @@ void    free_stack(t_node **stack)
         curr = curr->next;
         free(temp);
     }
-    exit(1);
+    *stack = NULL;
 }
 
 void    error_free(t_node **stack)

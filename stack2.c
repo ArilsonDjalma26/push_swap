@@ -21,12 +21,13 @@ void    rotate_stack(t_node **stack)
     t_node  *last;
 
     first = *stack;
-    last = first;
+    last =  *stack;
 
     while (last -> next)
         last = last -> next;
+    *stack = first->next;
     last -> next = first;
-    first = first -> next;
+    first->next = NULL;
 }
 void    reverse_rotate_stack(t_node **stack)
 {
@@ -37,6 +38,7 @@ void    reverse_rotate_stack(t_node **stack)
     t_node  *second_last;
 
     last = *stack;
+    second_last = NULL;
     while(last -> next)
     {
         second_last = last;

@@ -52,7 +52,7 @@ void    sb(t_node **b)
     second = first -> next;
 
     first -> next = second -> next;
-    second = first;
+    second -> next = first;
 
     *b = second;
     write(1, "sb\n", 3);

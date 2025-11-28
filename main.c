@@ -34,5 +34,8 @@ int main(int ac, char **av)
         sort_3(&a);
     else if(size <= 5)
         sort_5(&a, &b);
+    else
+        printf("Radix");
+
     free_stack(&a);
 }
