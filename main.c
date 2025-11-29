@@ -32,7 +32,9 @@ int main(int ac, char **av)
         sort_2(&a);
     else if(size == 3)
         sort_3(&a);
-    else if(size <= 5)
+    else if(size == 4)
+        sort_4(&a, &b);
+    else if(size == 5)
         sort_5(&a, &b);
     else
         printf("Radix");

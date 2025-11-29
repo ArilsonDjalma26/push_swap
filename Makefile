@@ -11,7 +11,8 @@ SRS = main.c \
 	stack2.c \
 	utils.c \
 	ft_split.c \
-	utils2.c
+	utils2.c \
+	index.c
 
 OBJS = $(SRS:.c=.o)
 

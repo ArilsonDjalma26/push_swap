@@ -47,18 +47,21 @@ void    sort_3(t_node **a)
         ra(a);
     }
 }
-void    sort_5(t_node **a, t_node **b)
+void    sort_4(t_node **a, t_node **b)
 {
-    
-    while(stack_size(*a) > 3)
-    {
-        move_min_to_top(a);
-        pb(a, b);
-    }
+    move_min_to_top(a);
+    pb(a, b);
     sort_3(a);
-    if(*b && (*b) -> next && (*b) -> value < (*b) -> next -> value)
-        sb(b);
-   
+    pa(a, b);
+}
+
+void    sort_5(t_node **a, t_node **b)
+{ 
+    move_min_to_top(a);
+    pb(a, b);
+    move_min_to_top(a);
+    pb(a, b);
+    sort_3(a);
     pa(a, b);
     pa(a, b);
 }

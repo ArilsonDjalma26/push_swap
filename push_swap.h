@@ -44,6 +44,7 @@ void    ra(t_node **a);
 void    rra(t_node **a);
 void    sort_2(t_node **a);
 void    sort_3(t_node **a);
+void    sort_4(t_node **a, t_node **b);
 void    sort_5(t_node **a, t_node **b);
 
 long    ft_atol(const char *str);
@@ -56,5 +57,6 @@ void    move_min_to_top(t_node **a);
 int     find_min_position(t_node *a);
 char	**ft_split(char const *s, char c);
 int     parse_args(int ac, char **av, t_node **a);
+void    index_stack(t_node *stack);
 size_t	ft_strlen(const char *s);
 #endif
