@@ -30,14 +30,14 @@ void    sa(t_node **a)
 
 void    pb(t_node **a, t_node **b)
 {
-    int     value;
+    t_node *tmp;
 
     if (!a || !*a)
-        return;
-
-    value = stack_pop(a);
-    stack_push(b, value);
-
+        return ;
+    tmp = *a;
+    *a = (*a)->next;
+    tmp->next = *b;
+    *b = tmp;
     write(1, "pb\n", 3);
 }
 

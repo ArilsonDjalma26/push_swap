@@ -65,7 +65,3 @@ void    sort_5(t_node **a, t_node **b)
     pa(a, b);
     pa(a, b);
 }
-/* void    radix(t_node *a, t_node *b)
-{
-
-} */

@@ -27,6 +27,7 @@ int main(int ac, char **av)
         return (free_stack(&a), 0);
     if(is_sorted(a))
         return(free_stack(&a), 0);
+    index_stack(a);
     size = stack_size(a);
     if(size == 2)
         sort_2(&a);
@@ -36,8 +37,13 @@ int main(int ac, char **av)
         sort_4(&a, &b);
     else if(size == 5)
         sort_5(&a, &b);
-    else
-        printf("Radix");
-
+    else if(size > 5)
+        radix_sort(&a, &b);
+    t_node  *tmp = a;
+    while(tmp != NULL)
+    {
+        printf("%d ", tmp -> value);
+        tmp = tmp -> next;
+    }
     free_stack(&a);
 }

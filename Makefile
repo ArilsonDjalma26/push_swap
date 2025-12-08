@@ -12,6 +12,7 @@ SRS = main.c \
 	utils.c \
 	ft_split.c \
 	utils2.c \
+	radix.c \
 	index.c
 
 OBJS = $(SRS:.c=.o)

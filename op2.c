@@ -14,13 +14,14 @@
 
 void    pa(t_node **a, t_node **b)
 {
-    int value;
+    t_node *tmp;
 
-    if(!b || !*b)
-        return;
-    value = stack_pop(b);
-    stack_push(a, value);
-
+    if (!b || !*b)
+        return ;
+    tmp = *b;
+    *b = (*b)->next;
+    tmp->next = *a;
+    *a = tmp;
     write(1, "pa\n", 3);
 }
 void    ra(t_node **a)
